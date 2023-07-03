@@ -1,0 +1,31 @@
+@startuml "模仿实现"
+class CashContext{
+    +getResult(): double
+}
+
+abstract CashSuper {
+    + acceptCash(): double
+}
+
+CashContext o--> CashSuper
+
+class CashNormal{
+    + acceptCash(): double
+}
+
+class CashRebate{
+    + acceptCash(): double
+}
+
+
+class CashReturn{
+    + acceptCash(): double
+}
+
+
+CashSuper <|-- CashNormal
+CashSuper <|-- CashRebate
+CashSuper <|-- CashReturn
+
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml "简单工厂实现"
+Interface CashFactory{
+    +createCashAccept(): CashSuper
+}
+
+abstract CashSuper {
+    + acceptCash(): double
+}
+
+CashFactory ..> CashSuper
+
+class CashNormal{
+    + acceptCash(): double
+}
+
+class CashRebate{
+    + acceptCash(): double
+}
+
+
+class CashReturn{
+    + acceptCash(): double
+}
+
+
+CashSuper <|-- CashNormal
+CashSuper <|-- CashRebate
+CashSuper <|-- CashReturn
+
+
+@enduml

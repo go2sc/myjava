@@ -1,0 +1,30 @@
+@startuml "简单工厂类"
+class "运算类" {
+    + getResult(): double
+}
+
+class "简单工厂类" {
+    + createOperate(): 运算类
+}
+
+"简单工厂类" ..> "运算类"
+
+class "加法类"{
+    + getResult(): double
+}
+class "乘法类"{
+    + getResult(): double
+}
+class "减法类"{
+    + getResult(): double
+}
+class "除法类"{
+    + getResult(): double
+}
+
+"加法类" --|> "运算类"
+"乘法类" --|> "运算类"
+"减法类" --|> "运算类"
+"除法类" --|> "运算类"
+
+@enduml
