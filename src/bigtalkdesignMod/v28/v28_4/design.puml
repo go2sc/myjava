@@ -1,0 +1,47 @@
+@startuml design
+
+abstract Action{
+    + getManConclusion(Man concreteElementA)
+    + getWomanConclusion(Woman concreteElementB)
+}
+
+Client --> Action
+
+class Success extends Action{
+    + getManConclusion(Man concreteElementA)
+    + getWomanConclusion(Woman concreteElementB)
+}
+
+class Failing extends Action{
+    + getManConclusion(Man concreteElementA)
+    + getWomanConclusion(Woman concreteElementB)
+}
+
+class Amativeness extends Action{
+    + getManConclusion(Man concreteElementA)
+    + getWomanConclusion(Woman concreteElementB)
+}
+
+class ObjectStructure {
+    + attach(Person element)
+    + detach(Person element)
+    + display(Action visitor)
+}
+
+Client --> ObjectStructure
+
+abstract Person{
+    + accept(Action visitor)
+}
+
+ObjectStructure --> Person
+
+class Man extends Person{
+    + accept(Action visitor)
+}
+
+class Woman extends Person{
+    + accept(Action visitor)
+}
+
+@enduml

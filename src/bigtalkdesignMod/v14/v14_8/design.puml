@@ -1,0 +1,56 @@
+@startuml x
+
+abstract Observable{
+    + addObserver(Observer observer)
+    + deleteObserver(Observer observer)
+    + setCharged()
+    + notifyObservers(Object arg)
+}
+
+abstract Subject {
+    + addObserver(Observer observer)
+    + deleteObserver(Observer observer)
+    + setCharged()
+    + notifyObservers(Object arg)
+}
+
+Observable <|-- Subject
+
+class Boss{
+    + addObserver(Observer observer)
+    + deleteObserver(Observer observer)
+    + setCharged()
+    + notifyObservers(Object arg)
+}
+
+class Secretary{
+    + addObserver(Observer observer)
+    + deleteObserver(Observer observer)
+    + setCharged()
+    + notifyObservers(Object arg)
+}
+
+Subject <|-- Boss
+Subject <|-- Secretary
+
+interface Observer{
+    + update()
+}
+
+Observable ..> Observer
+
+class StockObserver{
+    + update(Observable o, Object arg)
+}
+
+class NBAObserver{
+    + update(Observable o, Object arg)
+}
+
+Observer <|.. StockObserver
+Observer <|.. NBAObserver
+
+Observable <.. StockObserver
+Observable <.. NBAObserver
+
+@enduml

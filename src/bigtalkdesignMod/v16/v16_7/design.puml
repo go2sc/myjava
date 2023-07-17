@@ -1,0 +1,45 @@
+@startuml
+
+class Work{
+    + request()
+}
+
+abstract State{
+    + writeProgram(Work w)
+}
+
+Work o--> State
+Work <.. State
+
+class ForenoonState{
+    + writeProgram(Work w)
+}
+
+class AfternoonState{
+    + writeProgram(Work w)
+}
+
+class RestState{
+    + writeProgram(Work w)
+}
+
+class NoonState{
+    + writeProgram(Work w)
+}
+
+class EveningState{
+    + writeProgram(Work w)
+}
+
+class SleepingState{
+    + writeProgram(Work w)
+}
+
+State <|-- ForenoonState
+State <|-- AfternoonState
+State <|-- RestState
+State <|-- NoonState
+State <|-- EveningState
+State <|-- SleepingState
+
+@enduml

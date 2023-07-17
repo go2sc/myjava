@@ -1,0 +1,54 @@
+@startuml "装饰模式"
+abstract Component{
+    + operation()
+}
+
+note top of Component
+Component 是定义一个对象接口，
+可以给这些对象动态的添加职责
+end note
+
+' class ConcreteComponent implements Component{
+'     + operation()
+' }
+
+class ConcreteComponent extends Component{
+    + operation()
+}
+
+abstract Decorator extends Component{
+    + operation()
+}
+
+Component <--o Decorator
+
+note right of Decorator
+Decorator,装饰抽象类,继承了Component，
+从外类来扩展Component类的功能，但对于Component
+来说，是无需直到Decorator的存在的
+end note
+
+class ConcreteDecoratorA extends Decorator{
+    - addedState: String
+    + operation()
+}
+
+note bottom of ConcreteDecoratorA
+ConcreteDecorator, 就是具体的装饰对象，
+起到给Component添加职责的功能
+end note
+
+class ConcreteDecoratorB extends Decorator{
+    + operation()
+    - addedBehavior()
+}
+
+note bottom of ConcreteDecoratorB
+ConcreteDecorator, 就是具体的装饰对象，
+起到给Component添加职责的功能
+end note
+
+' Component <|-- ConcreteComponent
+
+
+@enduml

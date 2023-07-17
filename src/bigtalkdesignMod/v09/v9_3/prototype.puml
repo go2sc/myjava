@@ -1,0 +1,29 @@
+@startuml "prototype"
+
+abstract Prototype{
+    + clone()
+}
+
+note left of Prototype
+圆形类，声明一个克隆自身的接口
+end note
+
+class ConcretePrototype1 extends Prototype{
+    + clone()
+}
+
+note bottom of ConcretePrototype1
+具体圆形表，实现一个克隆自身的条件
+end note
+
+class ConcretePrototype2 extends Prototype{
+    + clone()
+}
+
+Prototype <-- client 
+
+note right of client
+让一个原型克隆自身，从而创建一个新的对象
+end note
+
+@enduml

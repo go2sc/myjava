@@ -1,0 +1,33 @@
+@startuml design
+
+class Manager {
+    + setSuperior(Manager superior)
+    + requestApplication(Request request)
+}
+
+Manager o--> Manager: 代码结构图
+
+Client --> Manager
+
+class Request {
+    + requestType
+    + requestContent
+    + number
+}
+
+Manager ..> Request
+
+class CommonManager extends Manager{
+    + requestApplication(Request request)
+}
+
+class Director extends Manager{
+    + requestApplication(Request request)
+}
+
+class GeneralManager extends Manager{
+    + requestApplication(Request request)
+}
+
+
+@enduml

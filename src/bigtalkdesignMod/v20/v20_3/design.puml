@@ -1,0 +1,65 @@
+@startuml design
+
+abstract Aggregate{
+    + {abstract} createIterator(): Iterator
+}
+
+note top of Aggregate
+聚集抽象类
+end note
+
+class ConcreteAggregate {
+    + createIterator(): Iterator
+}
+
+note bottom of ConcreteAggregate
+具体聚集类，
+继承 Aggregate
+end note
+
+Aggregate <|-- ConcreteAggregate
+
+Aggregate <-- Client
+
+abstract Iterator {
+    + first()
+    + next()
+    + isDone()
+    + currentItem()
+}
+
+note top of Iterator
+迭代抽象类，用于定义得到开始对象，得到下一个对象、
+判断是否到结尾、当前对象等抽象方法，统一接口
+end note
+
+Client --> Iterator
+
+class ConcreteIterator extends Iterator{
+    + first()
+    + next()
+    + isDone()
+    + currentItem()
+}
+
+note bottom of ConcreteIterator
+具体迭代器类，继承Iterator，实现开始、
+下一个、是否结尾、当前对象等方法
+end note
+
+class ConcreteIteratorDesc extends Iterator{
+    + first()
+    + next()
+    + isDone()
+    + currentItem()
+}
+
+note bottom of ConcreteIteratorDesc
+具体迭代器类，
+实现反序遍历，继承Iterator
+end note
+
+ConcreteAggregate ..> ConcreteIterator
+ConcreteAggregate ..> ConcreteIteratorDesc
+
+@enduml

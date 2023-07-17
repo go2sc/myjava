@@ -1,0 +1,26 @@
+@startuml design
+
+abstract UnitedNations {
+    + declare(String message, Country country)
+}
+
+class UnitedNationsSecurityCouncil extends UnitedNations {
+    - countryUSA
+    - countryIraq
+    + declare(String message, Country country)
+}
+
+UnitedNations <-- Country
+
+class USA extends Country{
+    + declare(String message)
+}
+
+class Iraq extends Country {
+    + declare(String message)
+}
+
+UnitedNationsSecurityCouncil --> USA
+UnitedNationsSecurityCouncil --> Iraq
+
+@enduml

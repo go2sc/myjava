@@ -1,0 +1,24 @@
+@startuml design
+
+class WebSiteFactory {
+    + getFlyweight(String key): WebSite
+    + getWebSiteCount()
+}
+
+abstract WebSite {
+    + use(User user)
+}
+
+WebSiteFactory o--> WebSite
+
+class ConcreteWebSite extends WebSite{
+    + use(User user)
+}
+
+class User {
+    + Name
+}
+
+WebSite <.. User
+
+@enduml

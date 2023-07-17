@@ -1,0 +1,51 @@
+@startuml design
+
+class Invoker{
+    - command: Command
+    + setConrnmand(Command command)
+    + excuteCommand()
+}
+
+note left of Invoker 
+    要求该命令执行这个请求
+end note
+
+Client ..> Invoker
+
+class Receiver{
+    + action()
+}
+
+Client ..> Receiver
+
+note left of Receiver
+知道如何实施与执行一个请求相关的
+操作，任何类都可能作为一个接收者
+end note
+
+abstract Command {
+    - receiver: Receiver
+    + excuteCommand()
+}
+
+note left of Command
+用来声明执行操作的接口
+end note
+
+Invoker o--> Command
+
+class ConcreteCommand {
+    - receiver: Receiver
+    + excuteCommand()
+}
+
+note bottom of ConcreteCommand
+将一个接收者对象绑定于一个动作，
+调用接收者相应的操作，以实现 executeCommand
+end note
+
+Command <|-- ConcreteCommand
+
+Receiver <-- ConcreteCommand
+
+@enduml

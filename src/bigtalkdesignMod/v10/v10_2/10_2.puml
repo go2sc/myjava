@@ -1,0 +1,12 @@
+@startuml 1
+class TestPaperA{
+    + testQuestion1()
+    + testQuestion2()
+    + testQuestion3()
+}
+class TestPaperB{
+    + testQuestion1()
+    + testQuestion2()
+    + testQuestion3()
+}
+@enduml 

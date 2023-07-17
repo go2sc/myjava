@@ -1,0 +1,20 @@
+@startuml 1
+
+class Resume {
+    + setPersonalInfo(sex, age)
+    + setWorkExperience(timeArea, company)
+    + display()
+    + clone(): Resume
+}
+
+Cloneable ()== Resume
+
+class WorkExperience{
+    + timeArea
+    + company
+}
+
+Resume o--> WorkExperience
+
+
+@enduml

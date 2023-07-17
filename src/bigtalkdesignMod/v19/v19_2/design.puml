@@ -1,0 +1,45 @@
+@startuml design
+
+abstract Component{
+    + {abstract} add(Component c)
+    + {abstract} remove(Component c)
+    + {abstract} display(int depth)
+}
+
+note top of Component
+组合中的对象声明接口，在适当情况下，实现所有类
+共有接口默认行为。声明一个接口用于访问Component
+的子部件
+end note
+
+Client --> Component
+
+class Leaf {
+    + add(Component c)
+    + remove(Component c)
+    + display(int depth)
+}
+
+note bottom of Leaf
+在组合中表示叶节点对象，
+叶节点没有子节点
+end note
+
+class Composite {
+    + add(Component c)
+    + remove(Component c)
+    + display(int depth)
+}
+
+note bottom of Composite
+定义有枝节点行为，用来存储子部件，
+在 Component 接口中实现与子部件有关的操作，
+比如增加add和删除remove
+end note
+
+Component <--o Composite
+
+Component <|-- Leaf
+Component <|-- Composite
+
+@enduml

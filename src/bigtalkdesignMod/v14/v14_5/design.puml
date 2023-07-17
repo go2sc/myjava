@@ -1,0 +1,53 @@
+@startuml design
+
+abstract Subject{
+    + subjectState
+    + attach(Observer observer)
+    + detach(Observer observer)
+    + notify()
+}
+
+note top of Subject
+Subject类，它把所有对观察者对象的引用
+保存在一个聚集里。抽象主题提供一个接口，
+可以增加和删除观察者对象
+end note
+
+abstract Observer{
+    + update()
+}
+
+note top of Observer
+Observer类，抽象观察者，为所有的具体
+观察者定义一个接口，在得到主题的通知时
+更新自己
+end note
+
+Subject ..> Observer
+
+class ConcreteSubject extends Subject{
+    + subjectState
+    + attach(Observer observer)
+    + detach(Observer observer)
+    + notify()
+}
+
+note bottom of ConcreteSubject
+ConcreteSubject类，具体主题，将有关联
+状态存入具体观察者对象；在具体主题的内部
+状态改变时，给所有登记过的观察者发出通知
+end note
+
+class ConreteObserver extends Observer{
+    + update()
+}
+
+note bottom of ConreteObserver
+ConreteObserver类，具体观察者，实现抽
+象观察者角色所要求的更新接口，以便使本身
+的状态与主题的状态相协调
+end note
+
+Subject <.. ConreteObserver
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml design
+
+abstract Handler {
+    + setSuccessor(Handler successor)
+    + handleRequest(int request)
+}
+
+note right of Handler
+定义了一个处理请示的接口
+end note
+
+Client --> Handler
+
+class CnncreteHandler1 extends Handler{
+    + handleRequest(int request)
+}
+
+note bottom of CnncreteHandler1
+具体处理者类，处理它所负责的请求，可访问它的
+后继者，如果可处理该请求，就处理之，否则就将
+该请求转发给它的后继者
+end note
+
+class CnncreteHandler2 extends Handler{
+    + handleRequest(int request)
+}
+
+@enduml

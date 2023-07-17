@@ -1,0 +1,21 @@
+@startuml design
+
+Client --> PlayContext
+
+abstract Expression{
+    + interpret(PlayContext context)
+    + excute(String key, double value)
+}
+
+Client --> Expression
+PlayContext <.. Expression
+
+class Note extends Expression{
+    + excute(String key, double value)
+}
+
+class Scale extends Expression{
+    + excute(String key, double value)
+}
+
+@enduml

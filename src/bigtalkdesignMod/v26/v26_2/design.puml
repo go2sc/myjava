@@ -1,0 +1,40 @@
+@startuml design
+
+class FlyweightFactory {
+    + getFlyweight(String key): Flyweight
+}
+
+note top of FlyweightFactory
+一个享元工厂，用来创建并管理 Flyweight ，当用户请求
+一个 Flyweight 时， FlyweightFactory 对象提供一
+个已创建的实例或者创建一个（如果不存在的活）
+end note
+
+abstract Flyweight {
+    + operation(int extrinsicstate)
+}
+
+note top of Flyweight
+所有具体享元类的超类或接口，通过这个接口，Flyweight可以
+接受并作用于外部状态
+end note
+
+class ConcreteFlyweight extends Flyweight{
+    + operation(int extrinsicstate)
+}
+
+note left of ConcreteFlyweight
+继承 Flyweight 超类或实现 Flyweight 接口，并为内部状态
+增加存储空间
+end note
+
+class UnsharedConcreteFlyweight extends Flyweight{
+    + operation(int extrinsicstate)
+}
+
+note right of UnsharedConcreteFlyweight
+指那些不需要共享的 Flyweight 子类。因为 Flyweight 接口共享
+成为可能，但它并不强制共享
+end note
+
+@enduml

@@ -1,0 +1,42 @@
+@startuml 工厂方法模式
+
+class 运算工厂类 {
+    + createOperation(): 运算类
+}
+
+class 运算类 {
+    + getResult(): double
+}
+
+运算类 <.. 运算工厂类
+
+class 加法类 extends 运算类{
+    + getResult(): double
+}
+class 乘法类 extends 运算类{
+    + getResult(): double
+}
+class 减法类 extends 运算类{
+    + getResult(): double
+}
+class 除法类 extends 运算类{
+    + getResult(): double
+}
+
+class 指数运算类 extends 运算类{
+    + getResult(): double
+}
+class 对数运算类 extends 运算类{
+    + getResult(): double
+}
+
+加法类 <.. 基础运算工厂 
+乘法类 <.. 基础运算工厂 
+减法类 <.. 基础运算工厂 
+除法类 <.. 基础运算工厂 
+指数运算类 <.. 高级运算工厂 
+对数运算类 <.. 高级运算工厂 
+
+运算工厂类 <|-- 基础运算工厂
+运算工厂类 <|-- 高级运算工厂
+

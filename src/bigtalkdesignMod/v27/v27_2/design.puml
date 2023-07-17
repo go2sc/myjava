@@ -1,0 +1,43 @@
+@startuml design
+
+Client --> Context
+
+note right of Context
+包含解释器之外
+的一些全局变量
+end note
+
+abstract AbstractExpression{
+    + interpret(Context context)
+}
+
+note right of AbstractExpression
+抽象表达式，声明一个抽象的解释操作，这个
+接口为抽象语法树中所有的节点所共享
+end note
+
+Client --> AbstractExpression
+Context <.. AbstractExpression
+
+class TerminalExpression extends AbstractExpression{
+    + interpret(Context context)
+}
+
+note bottom of TerminalExpression
+终结符表达式，实现与文法中
+的终结符相关联的解释操作
+end note
+
+class Nonterminal extends AbstractExpression{
+    + interpret(Context context)
+}
+
+note bottom of TerminalExpression
+非终结符表达式，为文法中的非终结符实现解释操作。
+对文法中每一条规则R1、R2...Rn 都需要一个具体的
+非终结符表达式类
+end note
+
+
+
+@enduml

@@ -1,0 +1,33 @@
+@startuml design
+
+interface IUser{
+    + insert(User user)
+    + getUser(int id): User
+}
+
+class SqlserverUser implements IUser{
+    + insert(User user)
+    + getUser(int id): User
+}
+
+class AccessUser implements IUser{
+    + insert(User user)
+    + getUser(int id): User
+}
+
+interface IFactory {
+    + createUser()
+}
+
+class SqlserverFactory implements IFactory{
+    + createUser()
+}
+
+class AccessFactory implements IFactory{
+    + createUser()
+}
+
+SqlserverFactory ..> SqlserverUser
+AccessFactory ..> AccessFactory
+
+@enduml

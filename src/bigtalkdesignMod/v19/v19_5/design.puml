@@ -1,0 +1,31 @@
+@startuml design
+
+abstract Company{
+    + add(Component c)
+    + remove(Component c)
+    + display(int depth)
+    + {abstract} lineOfDuty()
+}
+
+class HRDepartment {
+    + display(int depth)
+    + {abstract} lineOfDuty()
+}
+
+class FinanceDepartment {
+    + display(int depth)
+    + {abstract} lineOfDuty()
+}
+
+class ConcreteCompany{
+    + add(Component c)
+    + remove(Component c)
+    + display(int depth)
+    + {abstract} lineOfDuty()
+}
+
+Company <|-- HRDepartment
+Company <|-- FinanceDepartment
+Company <|-- ConcreteCompany
+
+@enduml

@@ -1,0 +1,42 @@
+@startuml "design"
+interface ISale{
+    + acceptCash():double
+}
+interface IFactory {
+    + createSaleModel(): ISale
+}
+
+ISale <.. IFactory
+
+class CashNormal implements ISale{
+    + acceptCash():double
+}
+
+class CashSuper implements ISale{
+    + acceptCash():double
+}
+
+ISale <--o CashSuper
+
+class CashReturn extends CashSuper{
+    + acceptCash():double
+}
+class CashRebate extends CashSuper{
+    + acceptCash():double
+}
+
+class CashRebateReturnFactory implements IFactory{
+    + createSaleModel(): ISale
+}
+class CashReturnRebateFactory implements IFactory{
+    + createSaleModel(): ISale
+}
+
+CashReturn <..CashRebateReturnFactory
+CashRebate <..CashRebateReturnFactory
+CashReturn <..CashReturnRebateFactory
+CashRebate <..CashReturnRebateFactory
+
+
+
+@enduml

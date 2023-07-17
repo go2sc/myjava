@@ -1,0 +1,40 @@
+@startuml design
+
+class Director{
+    + construct()
+}
+
+note bottom of Director
+Director 是构建一个使用 Builder 接口的对象
+end note
+
+interface Builder {
+    + buildPartA()
+    + buildPartB()
+    + buildPartC()
+}
+
+note right of Builder
+Builder 是为创建一个 Product 对象的各个部件指定的抽象接口
+end note
+
+Director o--> Builder
+
+class ConcreteBuilder extends Builder{
+    + buildPartA()
+    + buildPartB()
+    + buildPartC()
+}
+
+note left of ConcreteBuilder
+具体建造者，实现 Builder 接口，
+构造和装配各个部件
+end note
+
+ConcreteBuilder --> Product
+
+note top of Product
+具体产品
+end note
+
+@enduml

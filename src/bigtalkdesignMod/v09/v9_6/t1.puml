@@ -1,0 +1,4 @@
+@startuml
+教室 o- 学生
+教室 *-- 椅子
+@enduml

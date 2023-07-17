@@ -1,0 +1,37 @@
+@startuml design
+
+class Originator {
+    + State
+    + setMemento(Memento memento)
+    + createMemnto()
+}
+
+note top of Originator
+负责创建一个备忘录 Memento，用以
+记录当前时刻它的内部状态，并可使
+用备忘录恢复内部状态
+end note
+
+class Memento {
+    + State
+}
+
+note top of Memento
+负责存储 Originator 对象的内部状态，
+并可防止 Originator 以外的其他对象
+访问备忘录 Memento
+end note
+
+Originator ..> Memento
+
+class Caretaker{
+    + Memento: Memento
+}
+
+note top of Caretaker
+负责保存好备忘录 Memento
+end note
+
+Memento <--o Caretaker
+
+@enduml

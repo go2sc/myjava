@@ -1,0 +1,34 @@
+@startuml x
+
+abstract Subject {
+    + addObserver(Observer observer)
+    + deleteObserver(Observer observer)
+    + setAction()
+    + String getAction()
+}
+
+Observable <|-- Subject
+
+class Boss{
+    + addObserver(Observer observer)
+    + deleteObserver(Observer observer)
+    + setAction()
+    + String getAction()
+}
+
+Subject <|-- Boss
+
+interface PropertyChangeListener{
+    + propertyChange(PropertyChangeEvent event)
+}
+
+Observable ..> Observer
+
+class StockObserver{
+    + propertyChange(PropertyChangeEvent event)
+}
+
+
+Observer <|.. StockObserver
+
+@enduml

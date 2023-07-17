@@ -1,0 +1,19 @@
+@startuml 1
+
+class TestPaper{
+    + testQuestion1()
+    + testQuestion2()
+    + testQuestion3()
+}
+
+class TestPaperA extends TestPaper{
+    + testQuestion1()
+    + testQuestion2()
+    + testQuestion3()
+}
+class TestPaperB extends TestPaper{
+    + testQuestion1()
+    + testQuestion2()
+    + testQuestion3()
+}
+@enduml 

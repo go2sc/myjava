@@ -1,0 +1,35 @@
+@startuml design
+
+class Waiter{
+    - command: Command
+    + setOrdedr(Command command)
+    + notifyCommand()
+}
+
+class Barbecuer {
+    + bakeMutton()
+    + bakeChickenWing()
+}
+
+Client ..> Waiter
+Client ..> Barbecuer
+
+abstract Command{
+    - receiver: Barbecuer
+    + excuteCommand()
+}
+
+class BakeMuttonCommand extends Command{
+    - receiver: Barbecuer
+    + excuteCommand() 
+}
+
+class BakeChickenWingCommand extends Command{
+    - receiver: Barbecuer
+    + excuteCommand() 
+}
+
+Barbecuer <.. BakeMuttonCommand
+Barbecuer <.. BakeChickenWingCommand
+
+@enduml

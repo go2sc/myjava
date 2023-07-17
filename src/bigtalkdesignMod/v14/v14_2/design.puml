@@ -1,0 +1,19 @@
+@startuml design
+
+class Secretary {
+    + attach(StockObserver observer)
+    + detach(StockObserver observer)
+    + notifyEmployee()
+    + getAction(): String 
+    + setAction(String value)
+}
+
+class StockObserver {
+    # sub: Secretary
+    + update()
+}
+
+Secretary ..> StockObserver
+Secretary <.. StockObserver
+
+@enduml

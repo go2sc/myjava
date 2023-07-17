@@ -1,0 +1,35 @@
+@startuml design
+
+abstract Target {
+    + request()
+}
+
+note bottom of Target
+这是客户所期待的接口，目标可以是具体
+的或抽象的类，也可以是接口
+end note
+
+Client "-target" --> Target
+
+class Adapter{
+    + request()
+}
+
+Target <|-- Adapter
+
+class Adaptee{
+    + specificRequest()
+}
+
+Adapter "-adaptee" --> Adaptee
+
+note bottom of Adapter
+通过在内部包裹一个Adapter 对象，把源接口
+转换成目标接口
+end note
+
+note bottom of Adaptee
+需要适配的类
+end note
+
+@enduml

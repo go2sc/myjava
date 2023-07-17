@@ -1,0 +1,25 @@
+@startuml design
+
+class GameRole {
+    + Vitality
+    + Attack
+    + Defense
+    + saveState(): RoleStateMemento
+    + recoveryState(RoleStateMemento memento)
+}
+
+class RoleStateMemento {
+    + Vitality
+    + Attack
+    + Defense
+}
+
+GameRole ..> RoleStateMemento
+
+class RoleStateCaretaker{
+    + RoleStateMemento
+}
+
+RoleStateMemento <--o RoleStateCaretaker
+
+@enduml

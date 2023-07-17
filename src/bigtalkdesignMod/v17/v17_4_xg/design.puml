@@ -1,0 +1,35 @@
+@startuml design
+
+abstract Player {
+    + attack()
+    + defence()
+}
+
+class Forwards extends Player{
+    + attack()
+    + defence()
+}
+
+class Center extends Player{
+    + attack()
+    + defence()
+}
+
+class Guards extends Player{
+    + attack()
+    + defence()
+}
+
+class Translator extends Player{
+    + attack()
+    + defence()
+}
+
+class ForeignCenter{
+    + 进攻()
+    + 防守()
+}
+
+Translator --> ForeignCenter
+
+@enduml

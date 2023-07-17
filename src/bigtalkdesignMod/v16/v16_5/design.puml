@@ -1,0 +1,35 @@
+@startuml design
+
+Class Context {
+    + request()
+}
+
+note bottom of Context
+维护一个 ConcreteState 子类的实例,
+这个实例定义当前的状态
+end note
+
+abstract State {
+    + handle()
+}
+
+note right of State
+抽象状态类，定义一个接口以封装与Context
+的一个特定状态相关的行为
+end note
+
+Context "-state" o--> State
+
+class ConcreteStateA extends State {
+    + handle()
+}
+
+note bottom of ConcreteStateA
+具体状态类，每一个子类实现一个与Context的一个状态相关的行为
+end note
+
+class ConcreteStateB extends State {
+    + handle()
+}
+
+@enduml

@@ -1,0 +1,47 @@
+@startuml 1
+
+package "SubSystem Classes" {
+
+    class SubSystemOne{
+    + methodOne()
+    }
+
+    class SubSystemTwo{
+        + methodTwo()
+    }
+
+    class SubSystemThree{
+        + methodThree()
+    }
+
+    class SubSystemFour{
+        + methodFour()
+    }
+
+    class Facade {
+        + methodA()
+        + methodB()
+    }
+
+    note right of Facade
+    Facade, 外观类
+    知道哪些子类系统类负责处理请求
+    将客户的请求代理给适当的子系统对象
+    end note
+
+    Facade o--> SubSystemOne
+    Facade o--> SubSystemTwo
+    Facade o--> SubSystemThree
+    Facade o--> SubSystemFour
+}
+
+note bottom of "SubSystem Classes"
+SubSystem Classes, 子系统类集合
+实现子系统的功能，处理Facade对象指派的任务，
+注意子类中没有Facade的任何信息，
+即没有对Facade的引用
+end note
+
+Client --> Facade
+
+@enduml

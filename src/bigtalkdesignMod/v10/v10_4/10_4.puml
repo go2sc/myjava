@@ -1,0 +1,23 @@
+@startuml 1
+
+abstract AbstractClass {
+    + templateMethod()
+    + {abstract} primitiveOperation1()
+    + {abstract} primitiveOperation2()
+}
+
+note right of AbstractClass
+实现了一个模板方法，定义了算法的骨架,
+具体子类将重新定义 primitiveOperation 以实现一个算法的步骤
+end note
+
+class ConcreteClass extends AbstractClass {
+    + primitiveOperation1()
+    + primitiveOperation2()
+}
+
+note right of ConcreteClass
+实现 primitiveOperation 以完成算法中与特定子类相关的步骤
+end note
+
+@enduml

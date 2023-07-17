@@ -1,0 +1,34 @@
+@startuml "商城收银系统v1.2"
+
+interface ISale{
+    + acceptCash(): double
+}
+
+class CashContext{
+    +getResult(): double
+}
+
+class CashNormal implements ISale{
+    + acceptCash(): double
+}
+
+abstract CashSuper implements ISale {
+    + acceptCash(): double
+}
+
+ISale <--o CashSuper
+CashContext o--> CashSuper
+
+
+class CashRebate{
+    + acceptCash(): double
+}
+
+
+class CashReturn{
+    + acceptCash(): double
+}
+
+CashSuper <|-- CashRebate
+CashSuper <|-- CashReturn
+@enduml

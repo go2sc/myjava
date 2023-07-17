@@ -1,0 +1,10 @@
+@startuml design
+
+class 烤肉串者{
+    + bakeMutton()
+    + bakeChickenWing()
+}
+
+客户端类 --> 烤肉串者
+
+@enduml

@@ -1,0 +1,41 @@
+@startuml design
+
+abstract Mediator{
+    + send(String message, Colleague colleague)
+}
+
+note left of Mediator
+抽象中介者，定义了同事
+对象到中介者对象的接口
+end note
+
+abstract Colleague {
+}
+
+note right of Colleague
+抽象同事类
+end note
+
+class ConcreteMediator extends Mediator{
+    + send(String message, Colleague colleague)
+}
+
+note left of ConcreteMediator
+具体中介者对象，实现抽象类的方法，
+它需要知道左右具体同事类，并从具体同事
+接收消息，向具体同事对象发送命令
+end note
+
+ConcreteMediator --> ConcreteCollegue1
+ConcreteMediator --> ConcreteCollegue2
+
+Colleague <|-- ConcreteCollegue1
+Colleague <|-- ConcreteCollegue2
+
+note right of ConcreteCollegue2 
+具体同事类，每个具体同事只知道自己的行为，
+而不了解其他同事类的情况，但他们却都认识
+中介者对象
+end note
+
+@enduml

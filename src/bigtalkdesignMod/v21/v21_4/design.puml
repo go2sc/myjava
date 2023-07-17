@@ -1,0 +1,16 @@
+@startuml design
+
+class Singleton {
+    + instance:Signleton
+    - Singleton()
+    + getInstance()
+}
+
+note right of Signleton
+Singleton类，定义一个getInstance操作，
+允许客户访问它得唯一实例。
+getInstance 是一个静态方法，
+主要负责创建自己得唯一实例
+end note
+
+@enduml

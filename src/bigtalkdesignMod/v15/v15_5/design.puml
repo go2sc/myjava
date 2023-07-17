@@ -1,0 +1,54 @@
+@startuml design
+
+interface AbstractFactory {
+    + createProductA()
+    + createProductB()
+}
+
+note left of AbstractFactory
+抽象工厂接口，它里面应该
+包含所有产品创建的方法
+end note
+
+class ConcreteFactory1 implements AbstractFactory{
+    + createProductA()
+    + createProductB()
+}
+
+class ConcreteFactory2 implements AbstractFactory{
+    + createProductA()
+    + createProductB()
+}
+
+note bottom of ConcreteFactory2
+具体的工厂，创建具有特定
+实现的产品对象
+end note
+
+interface AbstractProductA{}
+
+note right of AbstractProductA
+抽象产品，他们都有可能
+有两种不同的实现
+end note
+
+AbstractProductA <|-- ProductA1
+AbstractProductA <|-- ProductA2
+
+note bottom of ProductA2
+对两个抽象产品的
+具体分类的实现
+end note
+
+interface AbstractProductB{}
+
+AbstractProductB <|-- ProductB1
+AbstractProductB <|-- ProductB2
+
+ConcreteFactory1 ..> ProductA1
+ConcreteFactory1 ..> ProductB1
+
+ConcreteFactory2 ..> ProductA2
+ConcreteFactory2 ..> ProductB2
+
+@enduml

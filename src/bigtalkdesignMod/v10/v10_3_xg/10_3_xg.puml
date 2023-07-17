@@ -1,0 +1,22 @@
+@startuml 1
+
+abstract TestPaper{
+    + testQuestion1()
+    # String {abstract} answer1() 
+    + testQuestion2()
+    # String {abstract} answer2()
+    + testQuestion3()
+    # String {abstract} answer3()
+}
+
+class TestPaperA extends TestPaper{
+    # String answer1() 
+    # String answer2()
+    # String answer3()
+}
+class TestPaperB extends TestPaper{
+    # String answer1() 
+    # String answer2()
+    # String answer3()
+}
+@enduml 

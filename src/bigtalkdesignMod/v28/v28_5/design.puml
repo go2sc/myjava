@@ -1,0 +1,67 @@
+@startuml
+
+class Visitor{
+    + visitConcreteElementA(ConcreteElementA concreteElementA)
+    + visitConcreteElementB(ConcreteElementB concreteElementB)
+}
+
+note right of Visitor
+为该对象结构中 ConcreteElement 的
+每个类声明一个 Visit 操作
+end note
+
+Client --> Visitor
+
+class ConcreteVisitor1 extends Visitor{
+    + visitConcreteElementA(ConcreteElementA concreteElementA)
+    + visitConcreteElementB(ConcreteElementB concreteElementB)
+}
+
+note bottom of ConcreteVisitor1
+具体访问者，实现每个由 Visitor 声明的操作。每个操作实现算法的一部分，
+而该算法片段乃是对应于结构中对象的类
+end note
+
+class ConcreteVisitor2 extends Visitor{
+    + visitConcreteElementA(ConcreteElementA concreteElementA)
+    + visitConcreteElementB(ConcreteElementB concreteElementB)
+}
+
+class ObjectStructure{
+    + attach(Element element)
+    + detach(Element element)
+    + display(Visitor visitor)
+}
+
+note top of ObjectStructure
+能枚举它的元素，可以提供一个
+高层的接口以允许访问者访问它
+的元素
+end note
+
+Client --> ObjectStructure
+
+abstract Element{
+    + accept(Visitor visitor)
+}
+
+note right of Element
+定义一个 accept 操作，
+它以一个访问者为参数
+end note
+
+ObjectStructure --> Element
+
+class ConcreteElementA extends Element{
+    + accpet(Visitor visitor)
+}
+
+class ConcreteElementB extends Element{
+    + accpet(Visitor visitor)
+}
+
+note right of ConcreteElementB
+具体元素，实现 accept 操作
+end note
+
+@enduml

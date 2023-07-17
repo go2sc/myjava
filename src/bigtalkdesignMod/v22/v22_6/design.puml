@@ -1,0 +1,40 @@
+@startuml design
+abstract Abstraction {
+    + operation()
+}
+
+note left of Abstraction
+抽象
+end note
+
+class RefinedAbstraction extends Abstraction{
+    + operation()
+}
+
+note left of RefinedAbstraction
+被提炼的抽象
+end note
+
+abstract Implementor {
+    + operation()
+}
+
+note right of Implementor
+实现
+end note
+
+class ConcreteImplementorA extends Implementor{
+    + operation()
+}
+
+class ConcreteImplementorB extends Implementor{
+    + operation()
+}
+
+note right of ConcreteImplementorB
+具体的实现
+end note
+
+Abstraction o--> Implementor
+
+@enduml

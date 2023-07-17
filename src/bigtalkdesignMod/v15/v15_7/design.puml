@@ -1,0 +1,42 @@
+@startuml design
+
+interface IUser{
+    + insert(User user)
+    + getUser(int id): User
+}
+
+class SqlserverUser implements IUser{
+    + insert(User user)
+    + getUser(int id): User
+}
+
+class AccessUser implements IUser{
+    + insert(User user)
+    + getUser(int id): User
+}
+
+interface IDepartment{
+    + insert(Department department)
+    + getDepartment(int id): Department
+}
+
+class SqlserverDepartment implements IDepartment{
+    + insert(Department department)
+    + getDepartment(int id): Department
+}
+
+class AccessDepartment implements IDepartment{
+    + insert(Department department)
+    + getDepartment(int id): Department
+}
+
+class DataAccess{
+    - db: String
+    + createUser(): User
+    + createDepartment(): Department
+}
+
+DataAccess ..> IUser
+DataAccess ..> IDepartment
+
+@enduml

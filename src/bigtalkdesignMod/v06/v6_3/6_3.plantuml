@@ -1,0 +1,37 @@
+@startuml "小菜装扮第二版"
+class "人"{
+    + 形象展示()
+}
+
+abstract 服饰 {
+    + 形象展示()
+}
+
+class "大T恤"  extends 服饰 {
+    + 形象展示()
+}
+
+class "垮裤"  extends 服饰{
+    + 形象展示()
+}
+
+
+class "球鞋"  extends 服饰{
+    + 形象展示()
+}
+
+class "西装"  extends 服饰{
+    + 形象展示()
+}
+
+class "领带"  extends 服饰{
+    + 形象展示()
+}
+
+class "皮鞋"  extends 服饰{
+    + 形象展示()
+}
+
+
+
+@enduml
